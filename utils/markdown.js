@@ -1,4 +1,4 @@
-const badges = require("./utils.badges.js");
+const badges = require("./badges");
 
 // Function to generate README content
 function generateAnswers(data) {
