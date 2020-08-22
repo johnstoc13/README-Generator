@@ -83,15 +83,18 @@ const init = async () => {
     try {
         // Get user answers for questions
         const answers = await promptQuestions();
-        console.log(answers);
 
+        // Create markdown from user answers
         const readmeContent = createMarkdown(answers);
         
+        // Write README to README.md
         await writeReadme("./output/README.md", readmeContent);
 
+        // Alert user that file was created successfully
         console.log("README.md successfully created!");
 
     } catch (err) {
+        // Alert user there was an error in creating the file
         console.log("Error in creating README.md file.");
         console.log(err);
     }
