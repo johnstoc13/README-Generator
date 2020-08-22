@@ -73,21 +73,24 @@ const promptQuestions = () => {
 const writeFileAsync = util.promisify(fs.appendFile);
 
 // Function to write the README
-const writeReadme = (file, data) => {
-    return writeFileAsync(file, data);
+const writeReadme = (fileName, data) => {
+    return writeFileAsync(fileName, data);
 }
 
 // Function to initialize asynchronously
 const init = async () => {
     console.log("Welcome to the README Generator! Answer the questions to create yours.");
     try {
+        // Get user answers for questions
         const answers = await promptQuestions();
+        console.log(answers);
 
         const readmeContent = createMarkdown(answers);
         
-        await writeReadme("./creations/README.md", readmeContent);
+        await writeReadme("./output/README.md", readmeContent);
 
         console.log("README.md successfully created!");
+
     } catch (err) {
         console.log("Error in creating README.md file.");
         console.log(err);
