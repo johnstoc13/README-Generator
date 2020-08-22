@@ -36,7 +36,7 @@ ${data.contributing}
 ${data.tests}
 
 ## License
-${data.license}
+This project is licensed under ${data.license}.
 
 ## Questions
 
