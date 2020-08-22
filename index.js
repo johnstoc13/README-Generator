@@ -2,7 +2,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const util = require("util");
-const createMarkdown = require("./utils/markdown.js");
+const createMarkdown = require("./utils/markdown");
 
 // Array of questins to be used in prompt function
 const questions = [
@@ -59,7 +59,7 @@ const questions = [
             "MIT",
             "Apache 2.0",
             "Unlicense",
-            "Mozilla Publice 2.0"
+            "Mozilla Public 2.0"
         ]
     },
 ]
@@ -69,4 +69,29 @@ const promptQuestions = () => {
     return inquirer.prompt(questions);
 }
 
-promptQuestions();
+// Write the file asynchronously and append
+const writeFileAsync = util.promisify(fs.appendFile);
+
+// Function to write the README
+const writeReadme = (file, data) => {
+    return writeFileAsync(file, data);
+}
+
+// Function to initialize asynchronously
+const init = async () => {
+    console.log("Welcome to the README Generator! Answer the questions to create yours.");
+    try {
+        const answers = await promptQuestions();
+
+        const readmeContent = createMarkdown(answers);
+        
+        await writeReadme("./creations/README.md", readmeContent);
+
+        console.log("README.md successfully created!");
+    } catch (err) {
+        console.log("Error in creating README.md file.");
+        console.log(err);
+    }
+}
+
+init();
