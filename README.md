@@ -18,7 +18,7 @@ Generated README
 
 ## Deployment
 
-A video of the generated README can be found here:  YOUTUBE LINK
+A video of the generated README can be found here: [Chase's README Generator](https://youtu.be/PuYBagscR2U)
 
 ## Notes
 
